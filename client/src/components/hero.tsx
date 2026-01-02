@@ -45,7 +45,7 @@ const Hero = () => {
                     <button className="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold text-lg hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                         Try AI Makeup
                     </button>
-                    <button className="px-8 py-4 bg-white text-slate-700 rounded-full font-semibold text-lg border border-slate-200 hover:bg-slate-50 transition-all shadow-sm hover:shadow-md">
+                    <button className="px-8 py-4 bg-white  text-slate-700 rounded-full font-semibold text-lg border border-slate-200 hover:bg-slate-50 transition-all shadow-sm hover:shadow-md">
                         View Examples
                     </button>
                 </div>

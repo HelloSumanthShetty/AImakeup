@@ -50,7 +50,7 @@ const Hero = () => {
                     </button>
                 </div>
 
-                <div className="mt-12 flex items-center justify-center gap-8 text-slate-400 grayscale opacity-70">
+                <div className="mt-12 flex items-center  justify-center gap-8 text-slate-400 grayscale opacity-70">
                 </div>
             </div>
         </div>

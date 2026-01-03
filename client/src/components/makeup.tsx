@@ -3,6 +3,7 @@ import { Upload, Camera } from 'lucide-react';
 import { motion, useMotionValue, animate, useMotionValueEvent } from 'framer-motion';
 
 import CarouselCard from './CarouselCard';
+import MakeUpPanel from './MakeUpPanel';
 
 // Import all portrait images
 import Colombia from '../assets/Colombia.png';
@@ -27,6 +28,7 @@ const Makeup = () => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [uploadedImage, setUploadedImage] = useState<string | null>(null);
     const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
+    const [makeupState, setMakeupState] = useState<Record<string, any>>({});
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     // 0 to total length loop
@@ -104,6 +106,7 @@ const Makeup = () => {
             reader.onload = (event) => {
                 setUploadedImage(event.target?.result as string);
                 stopAutoScroll();
+                setSelectedImage(null); // Clear preset selection if uploading
             };
             reader.readAsDataURL(file);
         }
@@ -113,10 +116,9 @@ const Makeup = () => {
         <div className="relative w-full min-h-screen max-w-[98%]">
             <div className="absolute z-10 md:top-1/2 transform md:-translate-y-1/2 left-0 right-0 bg-white/80 backdrop-blur-xl max-md:flex-col  border-zinc-200/50 rounded-[32px] shadow-2xl overflow-hidden  flex gap-4 h-[90%]">
 
-                
+                {/* Left Panel - Image Carousel */}
                 <div className="flex-1 overflow-hidden  relative flex items-center justify-center perspective-container rounded-2xl">
 
-                   
                     <div className="absolute max-md:hidden inset-0 z-0">
                         {portraitImages.map((src, i) => (
                             <motion.img
@@ -128,11 +130,10 @@ const Makeup = () => {
                                 className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110"
                             />
                         ))}
-                        
+
                         <div className="absolute inset-0 bg-white/30" />
                     </div>
 
-                    
                     <div className="relative z-10 w-full h-full flex overflow-hidden items-center justify-center perspective-[1000px]">
                         {portraitImages.map((src, i) => (
                             <CarouselCard
@@ -146,7 +147,6 @@ const Makeup = () => {
                         ))}
                     </div>
 
-                    
                     <div className="absolute max-md:bottom-2 max-md:text-[12px]  md:bottom-8  left-1/2 transform -translate-x-1/2 flex gap-4 z-50">
                         <button
                             onClick={() => fileInputRef.current?.click()}
@@ -168,26 +168,20 @@ const Makeup = () => {
                         </button>
                     </div>
 
-                    
                     <div className="absolute text-xl  max-md:text-sm top-2  left-0  right-0 text-center pointer-events-none z-20">
                         <h3 className="  font-bold text-slate-800 drop-shadow-sm">Select a Model</h3>
                         <p className="text-sm text-slate-300 font-medium drop-shadow-sm">or upload your own photo below</p>
                     </div>
                 </div>
 
-                
-                <div className="flex-1 md:flex flex-col gap-6 relative z-10 bg-white/50 rounded-2xl p-4">
-                    <div className="h-full border-2 border-dashed border-gray-300 rounded-2xl flex items-center justify-center text-gray-500">
-                        {selectedImage || uploadedImage ? (
-                            <div className="text-center p-6">
-                                <p className="mb-4 font-semibold">Ready to Process</p>
-                                <img
-                                    src={uploadedImage || selectedImage || ''}
-                                    className="w-40 h-40 rounded-full object-cover mx-auto shadow-md border-4 border-white"
-                                />
-                            </div>
-                        ) : 'Controls Area'}
-                    </div>
+                {/* Right Panel - MakeUp Controls */}
+                <div className="flex-1 relative z-10 h-full p-4">
+                    <MakeUpPanel
+                        selectedImage={selectedImage}
+                        uploadedImage={uploadedImage}
+                        makeupState={makeupState}
+                        setMakeupState={setMakeupState}
+                    />
                 </div>
             </div>
         </div>

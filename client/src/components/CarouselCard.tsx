@@ -70,12 +70,12 @@ const CarouselCard = ({
         position: "absolute",
         width: CARD_WIDTH,
         height: CARD_HEIGHT,
-        transformPerspective: 1000,
+        transformPerspective: 600,
       }}
     >
       <motion.div
         className={`w-full h-full rounded-2xl overflow-hidden bg-white shadow-2xl
-        ${isSelected ? "ring-2 ring-zinc-400/90" : ""}`}
+        ${isSelected ? "ring-2 ring-zinc-400/25" : ""}`}
         whileHover={{ scale: 1.03 }}
       >
         <img

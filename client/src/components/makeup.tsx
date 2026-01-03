@@ -139,8 +139,7 @@ const Makeup = () => {
                                 key={i}
                                 index={i}
                                 src={src}
-                                progress={progress}
-                                total={portraitImages.length}
+                                activeIndex={activeBackgroundIndex}
                                 isSelected={selectedImage === src}
                                 onClick={() => handleCardClick(i)}
                             />
@@ -170,9 +169,9 @@ const Makeup = () => {
                     </div>
 
                     
-                    <div className="absolute text-xl max-md:text-sm top-6 left-0  right-0 text-center pointer-events-none z-20">
+                    <div className="absolute text-xl  max-md:text-sm top-2  left-0  right-0 text-center pointer-events-none z-20">
                         <h3 className="  font-bold text-slate-800 drop-shadow-sm">Select a Model</h3>
-                        <p className="text-sm text-slate-600 font-medium">or upload your own photo below</p>
+                        <p className="text-sm text-slate-300 font-medium drop-shadow-sm">or upload your own photo below</p>
                     </div>
                 </div>
 

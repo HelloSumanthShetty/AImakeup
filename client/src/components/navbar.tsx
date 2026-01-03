@@ -111,10 +111,10 @@ const Navbar = () => {
 
                 {/* Actions */}
                 <div className="flex items-center gap-6">
-                    <a href="#" className="text-sm font-bold text-gray-900 hover:text-gray-600">
+                    <a href="https://www.gostudio.ai/login" target="_blank" className="text-sm font-bold text-gray-900 hover:text-gray-600">
                         Log in
                     </a>
-                    <button className="bg-black text-white px-5 h-[38px] rounded-full text-sm font-semibold">
+                    <button className="bg-black text-white px-5 h-[38px] rounded-full text-sm font-semibold" onClick={() => window.open("https://www.gostudio.ai/login", "_blank")}>
                         Sign up
                     </button>
                 </div>
